@@ -23,14 +23,14 @@ jobs:
 
       - name: Run Cypress tests and generate report
         run: |
-          rm -rf cypress/reports || true
+          rm -rf reports || true
           npm run test:full
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
-          path: cypress/reports/html
+          path: reports/html # 🔹 Corrigido: Agora aponta para a pasta real na raiz!
 
       - name: Upload Cypress videos
         uses: actions/upload-artifact@v4

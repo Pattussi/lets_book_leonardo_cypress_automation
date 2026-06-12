@@ -6,32 +6,38 @@ async function generateReport() {
   try {
     console.log("🧩 Iniciando merge dos relatórios JSON...");
 
-    // Verifica se há arquivos .json antes de tentar mesclar
-    const reportFiles = fs.readdirSync("cypress/reports").filter(f => f.endsWith(".json"));
+    // 🔹 Ajustado para a pasta real do projeto (reports/ na raiz)
+    const reportDir = "reports";
+
+    if (!fs.existsSync(reportDir)) {
+      fs.mkdirSync(reportDir, { recursive: true });
+    }
+
+    const reportFiles = fs.readdirSync(reportDir).filter(f => f.endsWith(".json"));
     if (reportFiles.length === 0) {
-      throw new Error("Nenhum arquivo JSON encontrado em cypress/reports/");
+      throw new Error(`Nenhum arquivo JSON encontrado em ${reportDir}/`);
     }
 
     // Faz o merge dos arquivos
     const jsonReport = await merge({
-      files: ["cypress/reports/*.json"],
+      files: [`${reportDir}/*.json`],
     });
 
     // Salva o arquivo JSON final
-    fs.writeFileSync("cypress/reports/report.json", JSON.stringify(jsonReport, null, 2));
+    fs.writeFileSync(`${reportDir}/report.json`, JSON.stringify(jsonReport, null, 2));
     console.log("✅ Arquivo report.json criado com sucesso.");
 
     // Gera o relatório HTML
     console.log("📊 Gerando relatório HTML...");
     await generator.create(jsonReport, {
-      reportDir: "cypress/reports/html",
-      reportTitle: "Relatório de Testes - SauceDemo",
-      reportFilename: "mochawesome", // <-- 🔹 Garante o nome fixo mochawesome.html
+      reportDir: `${reportDir}/html`,
+      reportTitle: "Relatório de Auditoria de Testes - LetsBook", // 🔹 Corrigido para LetsBook!
+      reportFilename: "mochawesome", 
       inlineAssets: true,
       overwrite: true,
     });
 
-    console.log("🎉 Relatório gerado com sucesso em: cypress/reports/html/mochawesome.html");
+    console.log(`🎉 Relatório gerado com sucesso em: ${reportDir}/html/mochawesome.html`);
   } catch (err) {
     console.error("❌ Erro ao gerar o relatório:", err);
     process.exit(1);

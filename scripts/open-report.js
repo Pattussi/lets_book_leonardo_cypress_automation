@@ -2,8 +2,8 @@ const { exec } = require("child_process");
 const path = require("path");
 const fs = require("fs");
 
-// Caminho absoluto do relatório HTML
-const reportPath = path.resolve(__dirname, "../cypress/reports/html/mochawesome.html");
+// 🔹 Corrigido: Aponta para a pasta reports/ na raiz do projeto, subindo apenas 1 nível de /scripts
+const reportPath = path.resolve(__dirname, "../reports/html/mochawesome.html");
 
 console.log("🧾 Tentando abrir o relatório Mochawesome...");
 

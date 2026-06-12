@@ -1,19 +1,23 @@
 {
-  "name": "sauce-cypress-automation",
+  "name": "letsbook-cypress-automation",
   "version": "1.0.0",
-  "description": "Automação de testes E2E para o site Sauce Demo com Cypress.",
+  "description": "Automação de testes E2E e auditoria de qualidade para a aplicação LetsBook.",
   "main": "index.js",
   "author": "Leonardo Gallardo",
   "license": "MIT",
   "scripts": {
-    "test": "npx cypress run --reporter mochawesome",
-    "report": "node ./scripts/generate-report.js",
-    "open:report": "node ./scripts/open-report.js",
-    "test:full": "npm run test && npm run report && npm run open:report"
+    "cypress:open": "npx cypress open",
+    "test:all": "npx cypress run",
+    "test:sucesso": "npx cypress run --env grep=@sucesso",
+    "test:bugs": "npx cypress run --env grep=@bugs",
+    "test:interface": "npx cypress run --env grep=@interface",
+    "test:e2e": "npx cypress run --spec 'cypress/e2e/fluxo-reserva-completo.cy.js'",
+    "test:full": "npm run test:all && node ./scripts/generate-report.js && node ./scripts/open-report.js"
   },
   "devDependencies": {
-    "cypress": "^14.3.3",
-    "mochawesome": "^7.1.3",
+    "@cypress/grep": "^4.1.0",
+    "cypress": "^15.17.0",
+    "mochawesome": "^1.5.5",
     "mochawesome-merge": "^4.3.0",
     "mochawesome-report-generator": "^6.3.2",
     "open": "^10.2.0"
