@@ -17,7 +17,7 @@
   "devDependencies": {
     "@cypress/grep": "^4.1.0",
     "cypress": "^15.17.0",
-    "mochawesome": "^1.5.5",
+    "mochawesome": "^7.1.4",
     "mochawesome-merge": "^4.3.0",
     "mochawesome-report-generator": "^6.3.2",
     "open": "^10.2.0"
