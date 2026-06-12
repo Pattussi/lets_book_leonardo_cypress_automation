@@ -6,8 +6,8 @@ async function generateReport() {
   try {
     console.log("🧩 Iniciando merge dos relatórios JSON...");
 
-    // 🔹 Ajustado para a pasta real do projeto (reports/ na raiz)
-    const reportDir = "reports";
+    // 🔹 Alterado para a pasta onde o Cypress REALMENTE salva os relatórios
+    const reportDir = "cypress/reports";
 
     if (!fs.existsSync(reportDir)) {
       fs.mkdirSync(reportDir, { recursive: true });
@@ -18,12 +18,12 @@ async function generateReport() {
       throw new Error(`Nenhum arquivo JSON encontrado em ${reportDir}/`);
     }
 
-    // Faz o merge dos arquivos
+    // Faz o merge dos arquivos de dentro de cypress/reports/
     const jsonReport = await merge({
       files: [`${reportDir}/*.json`],
     });
 
-    // Salva o arquivo JSON final
+    // Salva o arquivo JSON final na mesma pasta
     fs.writeFileSync(`${reportDir}/report.json`, JSON.stringify(jsonReport, null, 2));
     console.log("✅ Arquivo report.json criado com sucesso.");
 
@@ -31,7 +31,7 @@ async function generateReport() {
     console.log("📊 Gerando relatório HTML...");
     await generator.create(jsonReport, {
       reportDir: `${reportDir}/html`,
-      reportTitle: "Relatório de Auditoria de Testes - LetsBook", // 🔹 Corrigido para LetsBook!
+      reportTitle: "Relatório de Auditoria de Testes - LetsBook",
       reportFilename: "mochawesome", 
       inlineAssets: true,
       overwrite: true,
