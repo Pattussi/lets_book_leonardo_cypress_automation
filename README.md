@@ -237,7 +237,7 @@ letsbook-cypress-automation/
 
 ## ✨ Sobre o Autor
 
-**Leonardo Gallardo**
+**Leonardo Gallardo Pattussi**
 
 Profissional em transição para a área de Qualidade de Software (QA), com foco em testes manuais, automação de testes, análise de defeitos, validação de regras de negócio e melhoria contínua da qualidade de produtos digitais.
 
