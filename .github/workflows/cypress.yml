@@ -16,21 +16,21 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24' # 🚀 Atualizado para remover o aviso de depreciação do Node 20
 
       - name: Install dependencies
         run: npm ci
 
       - name: Run Cypress tests and generate report
         run: |
-          rm -rf reports || true
+          rm -rf cypress/reports || true
           npm run test:full
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
-          path: reports/html # 🔹 Corrigido: Agora aponta para a pasta real na raiz!
+          path: cypress/reports/html # 🔹 Corrigido: Agora aponta exatamente para onde o HTML é gerado!
 
       - name: Upload Cypress videos
         uses: actions/upload-artifact@v4
