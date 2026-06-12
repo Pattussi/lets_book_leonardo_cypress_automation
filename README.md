@@ -45,10 +45,10 @@ As suítes foram estruturadas com base nos dois módulos principais da aplicaç�
 
 #### Auditoria de Comportamento Incorreto (`@bugs`)
 
-* **BUG-013*: O sistema renderiza e exibe linhas com dados inconsistentes ou zerados (`0`) no painel.
-* **BUG-014: O badge de status altera seu valor lógico para **Cancelado**, mas falha ao não atualizar sua cor de fundo para o padrão visual esperado.
-* **BUG-015: A barra de busca oculta os dados quando não há resultados, mas falha ao não exibir uma mensagem amigável de feedback ("Nenhum registro encontrado").
-* **BUG-016: A tabela do CRM quebra a estrutura visual das colunas e omite dados por falta de scroll horizontal em viewports mobile (<768px).
+* **BUG-013**: O sistema renderiza e exibe linhas com dados inconsistentes ou zerados (`0`) no painel.
+* **BUG-014**: O badge de status altera seu valor lógico para **Cancelado**, mas falha ao não atualizar sua cor de fundo para o padrão visual esperado.
+* **BUG-015**: A barra de busca oculta os dados quando não há resultados, mas falha ao não exibir uma mensagem amigável de feedback ("Nenhum registro encontrado").
+* **BUG-016**: A tabela do CRM quebra a estrutura visual das colunas e omite dados por falta de scroll horizontal em viewports mobile (<768px).
 
 ---
 
